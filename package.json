@@ -1,0 +1,62 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "project framework",
+  "private": true,
+  "dependencies": {
+    "egg-cors": "^2.2.3",
+    "egg-scripts": "^2.10.0",
+    "egg-sequelize": "^5.2.2",
+    "egg-validate": "^2.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "midway": "^1.0.0",
+    "mysql2": "^2.2.5",
+    "sequelize-typescript": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.5.5",
+    "cross-env": "^6.0.0",
+    "egg-ci": "^1.8.0",
+    "midway-bin": "1",
+    "midway-mock": "1",
+    "ts-node": "^8.3.0",
+    "tslib": "^1.8.1",
+    "typescript": "^3.5.0"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "scripts": {
+    "comment:prod": "滴禹线上环境",
+    "start:prod": "EGG_SERVER_ENV=prod cross-env NODE_ENV=production egg-scripts start --daemon --title=midway-server-server --framework=midway --workers=2 --ts",
+    "comment:test": "滴禹测试环境",
+    "start:test": "EGG_SERVER_ENV=test cross-env NODE_ENV=production egg-scripts start --daemon --title=midway-server-server --framework=midway --workers=2 --ts",
+    "comment:dev": "本地开发环境",
+    "dev": "cross-env NODE_ENV=local midway-bin dev --ts",
+    "comment:stop": "关闭 npm run start 启动的服务器",
+    "stop": "egg-scripts stop --title=midway-server-server",
+    "comment:build": "清理旧的构建目录并开始构建",
+    "build": "midway-bin build -c",
+    "start_build": "npm run build && cross-env NODE_ENV=development midway-bin dev",
+    "clean": "midway-bin clean",
+    "debug": "cross-env NODE_ENV=local midway-bin debug --ts",
+    "test": "midway-bin test --ts",
+    "cov": "midway-bin cov --ts",
+    "ci": "npm run cov",
+    "autod": "midway-bin autod"
+  },
+  "ci": {
+    "version": "10"
+  },
+  "midway-bin-clean": [
+    ".vscode/.tsbuildinfo",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "lyn",
+  "license": "MIT"
+}
